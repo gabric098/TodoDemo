@@ -10,7 +10,6 @@ var buffer       = require('vinyl-buffer');
 var streamify    = require('gulp-streamify');
 var watchify     = require('watchify');
 var browserify   = require('browserify');
-var babelify     = require('babelify');
 var uglify       = require('gulp-uglify');
 var handleErrors = require('../util/handleErrors');
 var browserSync  = require('browser-sync');
@@ -25,7 +24,7 @@ function buildScript(file) {
     debug: true,
     cache: {},
     packageCache: {},
-    fullPaths: true
+    fullPaths: false
   }, watchify.args);
 
   if ( !global.isProd ) {
@@ -36,7 +35,6 @@ function buildScript(file) {
   }
 
   var transforms = [
-    babelify,
     debowerify,
     ngAnnotate,
     'brfs',
@@ -58,7 +56,8 @@ function buildScript(file) {
       .pipe(gulpif(createSourcemap, buffer()))
       .pipe(gulpif(createSourcemap, sourcemaps.init()))
       .pipe(gulpif(global.isProd, streamify(uglify({
-        compress: { drop_console: true }
+            compress: { drop_console: true },
+            mangle: false
       }))))
       .pipe(gulpif(createSourcemap, sourcemaps.write('./')))
       .pipe(gulp.dest(config.scripts.dest))

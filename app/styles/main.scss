@@ -4,6 +4,91 @@
 body {
   font-family: Helvetica, sans-serif;
   color: $font-color--dark;
-  background-color: $background--light;
-  padding: $half-space;
+  background-color: $background--lighter;
+}
+
+header {
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  color: $font-color--transred;
+  font-size: $font-size--xl;
+}
+
+.app-container {
+  min-width: $app-min-width;
+  max-width: $app-max-width;
+  margin: 0 auto;
+
+  ul.todo-list {
+    width:100%;
+    list-style-type: none;
+    padding: 0;
+    margin:0;    
+  }
+
+  .todo-item {
+    background-color: $background--white;
+    padding: 15px;    
+    border-right: 1px solid $border--light;
+    border-left: 1px solid $border--light;
+    border-bottom: 1px solid $border--light;    
+  }
+  .todo-item:hover > button.delete { display:inline; }
+
+  button.delete {
+    color: $button-color--delete;    
+    border: 0;
+    padding: 0;
+    background: transparent;
+    position: relative;
+    top:-7px;    
+    font-size: 25px;  
+    float:right;
+    display:none;
+  }
+}
+
+footer.todo-footer {
+  background-color: $background--white;
+  padding:10px 15px;
+  border-right: 1px solid $border--light;
+  border-left: 1px solid $border--light;
+  border-bottom: 1px solid $border--light; 
+  font-size: $font-size--sm;
+  color: $font-color--grey;
+}
+
+footer.todo-footer {
+  background-color: $background--white;
+  padding:10px 15px;
+  border-right: 1px solid $border--light;
+  border-left: 1px solid $border--light;
+  border-bottom: 1px solid $border--light; 
+  font-size: $font-size--sm;
+  color: $font-color--grey;
+}
+
+footer.app-footer {
+  background-color: transparent;
+  margin-top:40px;
+  width:100%;
+  text-align: center;
+
+  p {
+    font-size: $font-size--xs;
+    color: $font-color--grey;
+  }
+}
+
+#todo-input {
+  width: 100%;
+  
+  border: 1px solid $border--light;
+  border-bottom: 2px solid $border--light;
+  box-sizing: border-box;
+  padding: 20px;
+  font-size: $font-size--lg;  
 }

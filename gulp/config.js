@@ -24,12 +24,17 @@ module.exports = {
     'dest': 'build/fonts'
   },
 
+    'api': {
+        'src' : ['app/js/api/*'],
+        'dest': 'build/api'
+    },
+
   'views': {
     'watch': [
       'app/index.html',
-      'app/views/**/*.html'
+      'app/js/components/**/views/*.html'
     ],
-    'src': 'app/views/**/*.html',
+    'src': 'app/js/components/**/views/*.html',
     'dest': 'app/js'
   },
 
@@ -47,11 +52,6 @@ module.exports = {
     'entries'   : ['./app/js/main.js'],
     'bundleName': 'main.js',
     'sourcemap' : true
-  },
-
-  'test': {
-    'karma': 'test/karma.conf.js',
-    'protractor': 'test/protractor.conf.js'
   }
 
 };
