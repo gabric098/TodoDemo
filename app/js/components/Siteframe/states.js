@@ -3,7 +3,7 @@
 module.exports = /* @ngInject */ function States( $stateProvider, $urlRouterProvider, $locationProvider ) {
 
     $locationProvider
-        .html5Mode(false)
+        .html5Mode(true)
 
 
     $stateProvider
