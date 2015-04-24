@@ -21,7 +21,6 @@ module.exports = /*@ngInject*/ function ($q, $http) {
         var defer = $q.defer();
         $http.get('api/todos.json').success(function (data) {
             todoList = data;
-            console.log(todoList);
             defer.resolve();
         });
         return defer.promise;
