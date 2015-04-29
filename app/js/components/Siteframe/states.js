@@ -9,7 +9,6 @@ module.exports = /* @ngInject */ function States( $stateProvider, $urlRouterProv
     $stateProvider
         .state( 'APP', {
             templateUrl: 'Siteframe/views/Siteframe.html',
-            controller: require( './SiteframeController' ),
             abstract: true
         } )
         .state( 'APP.Todo', {
