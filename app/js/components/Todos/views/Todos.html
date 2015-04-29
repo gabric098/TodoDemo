@@ -2,12 +2,11 @@
     <input id="todo-input" type="text" placeholder="Add your next TODO" ng-model="newTodo"/>
 </form>
 <ul ng-repeat="todo in todos" class="todo-list">
-    <li>
-        <div class="todo-item"><label>{{ todo }}</label>
-            <button class="delete" ng-click="removeTodo(todo)">x</button>
-        </div>
-    </li>
+    <todo-item></todo-item>
 </ul>
-<footer class="todo-footer"><span class="todo-count"><ng-pluralize count="todos.length"
-                                               when="{'0' : 'Nothing to do, YAY!', '1' : '1 TODO', 'other' : '{} TODOs'}"></ng-pluralize></span>
+<footer class="todo-footer">
+    <span class="todo-count">
+        <ng-pluralize count="todos.length"
+                      when="{'0' : 'Nothing to do, YAY!', '1' : '1 TODO', 'other' : '{} TODOs'}"></ng-pluralize>
+    </span>
 </footer>
