@@ -1,7 +1,5 @@
 'use strict';
 
-var angular = require( 'angular' );
-
 module.exports = /*@ngInject*/ function ($q, $http) {
 
     var todoList = [];

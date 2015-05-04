@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = /*@ngInject*/ function (TodoDBFactory) {
+module.exports = /*@ngInject*/ function () {
     return {
         scope: {
             todoItem: "=",
