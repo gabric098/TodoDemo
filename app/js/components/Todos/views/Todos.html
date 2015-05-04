@@ -2,7 +2,7 @@
     <input id="todo-input" type="text" placeholder="Add your next TODO" ng-model="newTodo"/>
 </form>
 <ul ng-repeat="todo in todos" class="todo-list">
-    <todo-item todo-item="todo" delete-item="removeTodo(todo)"></todo-item>
+    <todo-item todo-item="todo" remove-todo-function="removeTodo(todoId)"></todo-item>
 </ul>
 <footer class="todo-footer">
     <span class="todo-count">

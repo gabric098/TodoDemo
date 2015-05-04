@@ -15,7 +15,12 @@ module.exports  = /*@ngInject*/function ($scope, TodoDBFactory) {
         $scope.newTodo = '';
     };
 
-    $scope.removeTodo = function(todo) {
-        TodoDBFactory.removeTodo(todo);
+    /**
+     * remove a todo item from the list
+     * based on the given primary key
+     * @param todoPk
+     */
+    $scope.removeTodo = function(todoPk) {
+        TodoDBFactory.removeTodo(todoPk);
     };
 };

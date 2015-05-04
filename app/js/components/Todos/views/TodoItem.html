@@ -1,5 +1,5 @@
 <li>
-    <div class="todo-item"><label>{{ todoItem }}</label>
-        <button class="delete" ng-click="deleteItem({todoParam:todo})">x</button>
+    <div class="todo-item"><label>{{ todoItem.msg }}</label>
+        <button class="delete" ng-click="removeTodoFunction({ todoId:todoItem.id })">x</button>
     </div>
 </li>

@@ -1,4 +1,4 @@
-["Buy the milk",
-  "Feed the cat",
-  "Go to work"
+[{"id": 1, "msg": "Buy the milk"},
+  {"id": 2, "msg": "Feed the cat"},
+  {"id": 3, "msg": "Go to work"}
 ]

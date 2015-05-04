@@ -4,7 +4,7 @@ module.exports = /*@ngInject*/ function () {
     return {
         scope: {
             todoItem: "=",
-            deleteItem: "&"
+            removeTodoFunction: "&"
         },
         restrict: 'E',
         templateUrl: 'Todos/views/TodoItem.html',

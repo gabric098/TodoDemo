@@ -3,15 +3,17 @@
 module.exports = /*@ngInject*/ function ($q, $http) {
 
     var todoList = [];
+    var lastUsedPK = 0;
 
-    var addTodo = function(todo) {
-        todoList.push(todo);
+    var addTodo = function(todoMsg) {
+        lastUsedPK++;
+        todoList.push({id: lastUsedPK, msg: todoMsg});
     };
 
-    var removeTodo = function(todo) {
-        var index = todoList.indexOf(todo);
-        if (index > -1) {
-            todoList.splice(index, 1);
+    var removeTodo = function(todoId) {
+        for (var i = todoList.length - 1; i > -1; i--) {
+            if (todoList[i].id === todoId)
+                return todoList.splice(i, 1);
         }
     };
 
@@ -19,6 +21,7 @@ module.exports = /*@ngInject*/ function ($q, $http) {
         var defer = $q.defer();
         $http.get('api/todos.json').success(function (data) {
             todoList = data;
+            lastUsedPK = data.length;
             defer.resolve();
         });
         return defer.promise;
