@@ -18,8 +18,4 @@ module.exports  = /*@ngInject*/function ($scope, TodoDBFactory) {
     $scope.removeTodo = function(todo) {
         TodoDBFactory.removeTodo(todo);
     };
-
-    $scope.showDelete = function() {
-
-    };
 };
