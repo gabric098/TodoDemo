@@ -17,6 +17,10 @@ module.exports = /* @ngInject */ function States( $stateProvider, $urlRouterProv
                     templateUrl: 'Title/views/Title.html',
                     controller: 'TitleController'
                 },
+                'infoBox': {
+                    templateUrl: 'InfoBox/views/InfoBox.html',
+                    controller: 'InfoBoxController'
+                },
                 'app': {
                     template: '<div id="content-container" ui-view=""></div>'
                 },

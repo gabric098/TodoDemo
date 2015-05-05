@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports  = /*@ngInject*/function ($scope, TodoDBFactory) {
+module.exports  = /*@ngInject*/function ($scope, TodoDBFactory, PubSubFactory) {
 
     $scope.todos = TodoDBFactory.getTodos();
 
@@ -13,6 +13,9 @@ module.exports  = /*@ngInject*/function ($scope, TodoDBFactory) {
 
         // reset the input form
         $scope.newTodo = '';
+
+        // broadcast the todoItemStateChange event
+        PubSubFactory.todoItemCreated();
     };
 
     /**
@@ -22,5 +25,8 @@ module.exports  = /*@ngInject*/function ($scope, TodoDBFactory) {
      */
     $scope.removeTodo = function(todoPk) {
         TodoDBFactory.removeTodo(todoPk);
+
+        // broadcast the todoItemStateChange event
+        PubSubFactory.todoItemDeleted();
     };
 };

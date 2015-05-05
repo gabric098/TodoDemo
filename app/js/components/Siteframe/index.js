@@ -8,6 +8,7 @@ module.exports = angular
 
         require('../Todos').name,
         require('../Title').name,
-        require('../Footer').name
+        require('../Footer').name,
+        require('../InfoBox').name
     ])
     .config(require('./states'));

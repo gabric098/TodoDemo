@@ -5,6 +5,7 @@ var angular = require('angular');
 module.exports = angular
     .module('APP.Todo.Todos',[
         require('angular-ui-router'),
+        require('../PubSub').name,
         require('../TodoDB').name
     ])
     .directive('todoItem', require('./TodoItemDirective'))
