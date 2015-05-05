@@ -1,19 +1,27 @@
 'use strict';
 
-module.exports = /*@ngInject*/ function ($q, $http) {
+module.exports = /*@ngInject*/ function ($q, $http, PubSubFactory) {
 
     var todoList = [];
     var lastUsedPK = 0;
 
     var addTodo = function(todoMsg) {
         lastUsedPK++;
-        todoList.push({id: lastUsedPK, msg: todoMsg});
+        var newTodoObj = {id: lastUsedPK, msg: todoMsg};
+        todoList.push(newTodoObj);
+
+        // broadcast the todoItemStateChange event
+        PubSubFactory.todoItemCreated(newTodoObj);
     };
 
     var removeTodo = function(todoId) {
         for (var i = todoList.length - 1; i > -1; i--) {
-            if (todoList[i].id === todoId)
-                return todoList.splice(i, 1);
+            if (todoList[i].id === todoId) {
+                var removed = todoList.splice(i, 1);
+                // broadcast the todoItemStateChange event
+                PubSubFactory.todoItemDeleted(removed[0]);
+                return;
+            }
         }
     };
 

@@ -9,13 +9,11 @@ module.exports = /*@ngInject*/ function ($rootScope) {
     };
 
     var todoItemCreated = function(todoItem) {
-        console.log("Broadcasting created!");
-        $rootScope.$broadcast('todoItemStateChange', {status: 'created'});
+        $rootScope.$broadcast('todoItemStateChange', {status: 'created', todoObj: todoItem});
     };
 
     var todoItemDeleted = function(todoItem) {
-        console.log("Broadcasting deleted!");
-        $rootScope.$broadcast('todoItemStateChange', {status: 'deleted'});
+        $rootScope.$broadcast('todoItemStateChange', {status: 'deleted', todoObj: todoItem});
     };
 
     return {
