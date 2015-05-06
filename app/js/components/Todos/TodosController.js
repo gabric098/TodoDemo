@@ -2,7 +2,9 @@
 
 module.exports  = /*@ngInject*/function ($scope, TodoDBFactory) {
 
-    $scope.todos = TodoDBFactory.getTodos();
+    TodoDBFactory.loadInitialTodos().then(function () {
+        $scope.todos = TodoDBFactory.getTodos();
+    });
 
     /**
      * Add new item to the TODO list

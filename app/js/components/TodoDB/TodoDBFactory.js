@@ -5,6 +5,16 @@ module.exports = /*@ngInject*/ function ($q, $http, PubSubFactory) {
     var todoList = [];
     var lastUsedPK = 0;
 
+    var loadInitialTodos = function() {
+        var defer = $q.defer();
+        $http.get('api/todos.json').success(function (data) {
+            todoList = data;
+            lastUsedPK = data.length;
+            defer.resolve();
+        });
+        return defer.promise;
+    };
+
     var addTodo = function(todoMsg) {
         lastUsedPK++;
         var newTodoObj = {id: lastUsedPK, msg: todoMsg};
@@ -25,20 +35,14 @@ module.exports = /*@ngInject*/ function ($q, $http, PubSubFactory) {
         }
     };
 
-    var loadInitialTodos = function() {
-        var defer = $q.defer();
-        $http.get('api/todos.json').success(function (data) {
-            todoList = data;
-            lastUsedPK = data.length;
-            defer.resolve();
-        });
-        return defer.promise;
+    var getTodos = function() {
+        return todoList;
     };
 
     return {
-        getTodos: function () { return todoList; },
+        loadInitialTodos: loadInitialTodos,
         addTodo: addTodo,
         removeTodo: removeTodo,
-        loadInitialTodos: loadInitialTodos
+        getTodos: getTodos
     };
 };
